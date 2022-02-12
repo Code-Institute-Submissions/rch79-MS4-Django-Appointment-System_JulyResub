@@ -19,7 +19,7 @@ class Appointment(models.Model):
     )
     date = models.DateTimeField()
     status = models.SmallIntegerField(choices=APPOINTMENT_STATUS, default=0)
-    comment = models.TextField()
+    comment = models.TextField(default="", blank=True)
 
     class Meta:
         ordering = ['-date']
@@ -40,7 +40,7 @@ class Message(models.Model):
     client = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='messages'
     )
-    text = models.TextField
+    text = models.TextField(blank=False, default="")
     date = models.DateTimeField(auto_now_add=True, blank=True)
     status = models.SmallIntegerField(choices=MESSAGE_STATUS, default=0)
 
