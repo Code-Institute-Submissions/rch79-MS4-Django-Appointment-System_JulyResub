@@ -1,0 +1,1 @@
+web: gunicorn appointment_assist_project.wsgi
