@@ -18,6 +18,7 @@ class AppointmentAdmin(admin.ModelAdmin):
     def set_to_pending_confirmation(self, request, queryset):
         queryset.update(status = 0)
 
+
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('date', 'client', 'status')
