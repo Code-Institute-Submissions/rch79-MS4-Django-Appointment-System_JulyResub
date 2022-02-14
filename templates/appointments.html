@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+<table class='table'>
+   <thead>
+      <tr>
+         <th scope='col'>Appointment Date</th>
+         <th scope='col'>Client Name</th>
+         <th scope='col'>Appointment Status</th>
+         <th scope='col'>Comments</th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for appointment in object_list %}
+      <tr>
+         <td>{{ appointment.date }}</td>
+         <td>{{ appointment.client }}</td>
+         <td>{{ appointment.status }}</td>
+         <td>{{ appointment.comment }}</td>
+      </tr>
+      {% endfor %}
+   </tbody>
+</table>
+{% else %}
+<table class='table'>
+   <thead>
+      <tr>
+         <th scope='col'>Appointment Date</th>
+         <th scope='col'>Appointment Status</th>
+         <th scope='col'>Comments</th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for appointment in object_list %}
+      {% if request.user == appointment.client %}
+      <tr>
+         <td>{{ appointment.date }}</td>
+         <td>{{ appointment.status }}</td>
+         <td>{{ appointment.comment }}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+   </tbody>
+</table>
+{% endif %}
+
+{%endblock%}

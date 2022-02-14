@@ -3,7 +3,9 @@ from django.views import generic
 from .models import Appointment
 
 
-class AppointmentList(generic.ListView):
+class AppointmentListView(generic.ListView):
     model = Appointment
-    queryset = Appointment.objects.filter(status=1).order_by('-date')
-    template_name = 'index.html'
+    queryset = Appointment.objects.all()
+    template_name = 'appointments.html'
+
+
