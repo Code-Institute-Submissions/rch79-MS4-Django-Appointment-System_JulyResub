@@ -1,5 +1,9 @@
 [Try it out on Heroku](https://ms4-counselling-appts.herokuapp.com/)
 
+# PLEASE NOTE: THIS IS A WORK-IN-PROGRESS, UNFINISHED PROJECT
+
+
+# Therapeutics, Inc
 
 This is a basic appointment scheduling system for a fictional mental health practice called "Therapeutics Inc". Patients can log in to schedule an appointment, view their upcoming appointments or send a message to their counsellor. Appointments are offered in 1 hour increments, from 9am to 6pm. Each session lasts 1 hour. The councillor can log in and view all their upcoming appointments, change the appointment status, and read patient messages 
 
