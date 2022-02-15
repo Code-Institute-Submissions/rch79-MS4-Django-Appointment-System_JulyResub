@@ -29,7 +29,7 @@ The interface was designed to be straightforwad and self-explanatory. It consist
 #### 4. Contact Us
  - Allows users to send a message to the counsellor. This option is only available to authenticated users
 #### 5. Sign in
-- Allows users to sign in with their username and password. This option is only available to unauthenticated users
+- Allows users to sign in with their username and password. This option is only available to unauthenticated users. Temporarily points to the Django Admin login page during the work-in-progress stages
 #### 6. Sign out
 - Allows users to sign out from the site. This option is only available to authenticated users
 #### 7. Site Admin
