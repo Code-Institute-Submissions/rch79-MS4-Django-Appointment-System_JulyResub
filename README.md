@@ -1,108 +1,88 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+[Try it out on Heroku](https://ms4-counselling-appts.herokuapp.com/)
 
-Welcome rch79,
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This is a basic appointment scheduling system for a fictional mental health practice called "Therapeutics Inc". Patients can log in to schedule an appointment, view their upcoming appointments or send a message to their counsellor. Appointments are offered in 1 hour increments, from 9am to 6pm. Each session lasts 1 hour. The councillor can log in and view all their upcoming appointments, change the appointment status, and read patient messages 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## Target Audience
 
-## Gitpod Reminders
+Mental Health patients who wish to book an appointment with their mental health.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## User Goals
+- Users should be able to easily book appointments, view any upcoming appointments at their booking status and send a message to their mentalh health counsellor. Unavailable time slots should be visible in the appointment booking page
 
-`python3 -m http.server`
+## Admin (Counsellor) Goals
+- The site admin (aka the counsellor) should be able to view all the upcoming appointments, change appointment status, and read messages sent by their clients
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+## Structure
+The interface was designed to be straightforwad and self-explanatory. It consists of a main menu that presents the user the following options:
+#### 1. Home:
+ - Loads the main page
+#### 2. Book an appointment:
+ - Allows user to book an appointment (based on predetermined time slots). This option is only available to authenticated users.
+#### 3. View upcoming appointments:
+ - Displays a list of upcoming appointments for the user. The counsellor can see upcoming appointment for all users. This option is only available to authenticaded users
+#### 4. Contact Us
+ - Allows users to send a message to the counsellor. This option is only available to authenticated users
+#### 5. Sign in
+- Allows users to sign in with their username and password. This option is only available to unauthenticated users
+#### 6. Sign out
+- Allows users to sign out from the site. This option is only available to authenticated users
+#### 7. Site Admin
+- Links to the Django Admin page. This option is only available to the counsellor
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## User Stories
+    1. As a site user I would like to book an appointment with my counsellor
+    2. As a site user I would like to sign in to the website
+    3. As a site user I would klike to sign off from the website
+    4. As a site user I would like to send a message to my counsellor
+    5. As a site user i would like to see my upcoming apponintments and their status
+    6. As a site admin I would like to view the upcoming appointments for all users
+    7. As a site admin I would like to change an appointment status when necessary
+    8. As a site admin I would like to read messages sent by my clients
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+## Deployment
+The program was deployed on [Heroku]((https://www.heroku.com/)), using the following steps:
+- Create an account on Heroku
+- On the user account page, click on "new", and "Create new app"
+- On the "Resources" tab, under Add-ons, install Heroku Postgres"
+- On the "Settings" tab, click on "Reveal Config Vars" and add the folowing variables 
+  - CLOUDINARY_URL
+  - DATABASE_URL
+  - DISABLE_COLLECTSTATIC  (set to 1)
+  - SECRET_KEY
+- On the "Deploy" tab, follow the steps below:
+  - Deploy method: GitHub
+  - Click on "Connect to GitHub"
+  - Select the repository for the program being deployed
+  - Click on "connect"
+  - Select one of the following options:
+    - Automatic deploy: Heroku will rebuild the app every time a change is pushed to the GitHub repository
+    - Manual deploy: Heroku will only rebuild the app when the user chooses to do so.
+- Required Python dependencies were added to the "requirements.txt" file using the "pip freeze > requirements.txt" CLI command on Gitpod. This file is used by Heroku to install the dependencies used in the program
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+### Applications and Platforms
+ - [Git](https://git-scm.com/) - CLI-based version control software available on Gitpod
+ - [GitHub](https://github.com/) - Project repository
+ - [Gitpod](https://www.gitpod.io/) - A Container-based development platform on which some of the coding was written
+ - [Heroku](https://www.heroku.com/) - A cloud application platform used for deployment of the program
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Python Libraries:
+ - [psycopg2](https://pypi.org/project/psycopg2/) - A PostgreSQL database adapter or Python
+ - [pytz](https://pypi.org/project/pytz/) - For performing timezone calculations
+ - [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server compatible with various web frameworks
+ - [dj-database-url](https://pypi.org/project/dj-database-url/) - A Django utility that allows you to utilize a DATABASE_URL environment variable to configure a Django application
+ - [Django](https://www.djangoproject.com/) - A high-level Python framework for rapid development
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+ ### Other:
+ - [Bootstrap](https://getbootstrap.com/) - A free and open-source CSS framework
+ - [Cloudinary](https://cloudinary.com/) - A cloud-based image hosting service for websites and apps
+ - [flatpickr](https://flatpickr.js.org/) - A highly customizable datetime picker for websites
+ - [Google Fonts](https://fonts.google.com/) - A font embedding service library
+ - [Font Awesome](https://fontawesome.com/) - A font and icon toolkit based on CSS
 
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+## Acknowledgements
+- Thank you to the Code Institute staff - their guidance and materials are always top notch!
+- A huge thank you to my mentor Spence Barriball
