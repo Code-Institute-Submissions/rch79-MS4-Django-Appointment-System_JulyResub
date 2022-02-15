@@ -10,3 +10,19 @@ class AppointmentListView(generic.ListView):
     model = Appointment
     queryset = Appointment.objects.all()
     template_name = 'appointments.html'
+
+
+class MessageView(generic.TemplateView):
+    template_name = 'contact.html'
+
+
+class AppointmentBookingView(generic.TemplateView):
+    template_name = 'appointment_booking.html'
+
+
+class SignOut(generic.TemplateView):
+    template_name = 'sign_out.html'
+
+
+class SignIn(generic.TemplateView):
+    template_name = 'sign_in.html'

@@ -4,7 +4,7 @@
 <html class="h-100">
 
 <head>
-    <title>Appointment Assist</title>
+    <title>Therapeutics Inc</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -40,20 +40,20 @@
               </li>
               {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Book an appointment</a> 
+                        <a class="nav-link" href="{% url 'appointment_booking' %}">Book an appointment</a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'appointments' %}">View upcoming appointments</a> 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact us</a> 
+                        <a class="nav-link" href="{% url 'contact_us' %}">Contact us</a> 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign Out</a> 
+                        <a class="nav-link" href="{% url 'sign_out' %}">Sign Out</a> 
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign In</a> 
+                        <a class="nav-link" href="{% url 'sign_in' %}">Sign In</a> 
                     </li>
                 {% endif %}
           </div>
