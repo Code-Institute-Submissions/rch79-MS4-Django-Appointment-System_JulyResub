@@ -5,12 +5,12 @@
 - Home
 {% endblock %}
 
+{% block extra_css %}
+{{ block.super }}
+    <link rel="stylesheet" type ="text/css" href="{% static 'css/base.css' %}">
+{% endblock %}
+
 {% block content %}
-
-
-
-<p>PLACEHOLDER HOME PAGE</p>
-
-
+    <div class="main-image"></div>
 {%endblock%}
 
