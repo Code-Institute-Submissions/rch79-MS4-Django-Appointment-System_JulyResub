@@ -21,8 +21,8 @@ class AppointmentBookingView(generic.TemplateView):
 
 
 class SignOut(generic.TemplateView):
-    template_name = 'sign_out.html'
+    template_name = 'allauth/account/logout.html'
 
 
 class SignIn(generic.TemplateView):
-    template_name = 'sign_in.html'
+    template_name = 'allauth/account/login.html'
