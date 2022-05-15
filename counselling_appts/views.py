@@ -26,3 +26,6 @@ class SignOut(generic.TemplateView):
 
 class SignIn(generic.TemplateView):
     template_name = 'allauth/account/login.html'
+
+class SignUp(generic.TemplateView):
+    template_name = 'allauth/account/signup.html'
