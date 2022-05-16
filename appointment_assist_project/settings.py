@@ -109,7 +109,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-LOGIN_URL = '/sign_in/'
+LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'appointment_assist_project.wsgi.application'
@@ -118,7 +118,7 @@ WSGI_APPLICATION = 'appointment_assist_project.wsgi.application'
 ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
 INVITATIONS_ACCEPT_INVITE_AFTER_SIGNUP = True
 INVITATIONS_INVITATION_ONLY = True
-INVITATIONS_SIGNUP_REDIRECT = '/sign_up/'
+INVITATIONS_SIGNUP_REDIRECT = '/accounts/signup'
 
 
 # Database
