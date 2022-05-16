@@ -17,15 +17,4 @@ class MessageView(generic.TemplateView):
 
 
 class AppointmentBookingView(generic.TemplateView):
-    template_name = 'appointment_booking.html'
-
-
-class SignOut(generic.TemplateView):
-    template_name = 'allauth/account/logout.html'
-
-
-class SignIn(generic.TemplateView):
-    template_name = 'allauth/account/login.html'
-
-class SignUp(generic.TemplateView):
-    template_name = 'allauth/account/signup.html'
+    template_name = 'counselling_appts/appointment_booking.html'
