@@ -1,13 +1,33 @@
 {% extends "base.html" %}
+{% load static %}
 
+{% block extra_title %}
+  - Appointment Booking
+{% endblock %}
+
+{% block extra_css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+{% endblock %}
+
+{% block extra_js%}
+  {{ block.super }}
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script>
+    $( function() {
+      $( "#datepicker" ).datepicker({ minDate: "+1", maxDate: "+20D", beforeShowDay: $.datepicker.noWeekends });
+    } );
+  </script>
+{% endblock %}
 
 {% block content %}
+  <p>Date: <input type="text" id="datepicker"></p>
+
+  <p>{{ request.user }}</p>
+{% endblock %}
 
 
 
-<p>PLACEHOLDER APPOINTMENT BOOKING PAGE</p>
-
-
-{%endblock%}
 
 
