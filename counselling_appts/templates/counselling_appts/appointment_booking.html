@@ -7,24 +7,25 @@
 
 {% block extra_css %}
   {{ block.super }}
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 {% endblock %}
 
 {% block extra_js%}
   {{ block.super }}
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-  <script>
-    $( function() {
-      $( "#datepicker" ).datepicker({ minDate: "+1", maxDate: "+20D", beforeShowDay: $.datepicker.noWeekends });
-    } );
-  </script>
-{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+ {% endblock %}
 
 {% block content %}
-  <p>Date: <input type="text" id="datepicker"></p>
-
+  <form action>
+    <label for="flatpickr">Please select the appointment date:</label><br>
+    <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
+  </form>
   <p>{{ request.user }}</p>
+{% endblock %}
+
+{% block postload_js %}
+{{ block.super }}
+  <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
 {% endblock %}
 
 

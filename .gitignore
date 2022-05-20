@@ -9,3 +9,5 @@ node_modules/
 cloudinary_python.txt
 base_backup.html
 appointments_backup.html
+create_booked_dates.py
+appointment_booking_test.html
