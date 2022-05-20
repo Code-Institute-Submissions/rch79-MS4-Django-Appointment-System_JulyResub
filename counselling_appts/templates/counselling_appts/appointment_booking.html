@@ -13,7 +13,7 @@
 {% block extra_js%}
   {{ block.super }}
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
- {% endblock %}
+{% endblock %}
 
 {% block content %}
   <form action>
@@ -21,10 +21,13 @@
     <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
   </form>
   <p>{{ request.user }}</p>
+  <p>Blocked DAtes: {{ blocked_dates }}</p>
+  <p>Test_text: {{ test_text }}</p>
 {% endblock %}
 
 {% block postload_js %}
 {{ block.super }}
+{{ blocked_dates|json_script:"blocked_dates" }}
   <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
 {% endblock %}
 

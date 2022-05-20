@@ -26,6 +26,18 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f'{self.date: %d %B %Y at %H:%M} - Client Name: {self.client}'
+    
+    def date_no_time(self):
+        return (self.date.year, self.date.month, self.date.day)
+
+    def date_str(self):
+        return str(self.date.year) + str(self.date.month) + str(self.date.day)
+
+    def date_strf(self):
+        return self.date.strftime('%Y-%m-%d')
+  
+    def time_only(self):
+        return self.date.hour
 
 
 class Message(models.Model):

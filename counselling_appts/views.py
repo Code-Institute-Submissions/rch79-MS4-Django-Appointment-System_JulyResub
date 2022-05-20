@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
 
+# python functions used to send date info to the date and time pickers
+from .modules.booked_dates import create_appt_dict, create_fully_booked_list
+
 #decorator to redirect non-authenticated users to login page
 from django.contrib.auth.decorators import login_required
 
@@ -17,8 +20,12 @@ class MessageView(generic.TemplateView):
 class AppointmentBookingView(generic.TemplateView):
     template_name = 'counselling_appts/appointment_booking.html'
 
+
+
+## test view - delete before deployment
 class TestView(generic.TemplateView):
     template_name = 'counselling_appts/test_template.html'
+
 
 @login_required
 def list_appointments(request):
@@ -38,3 +45,19 @@ def list_appointments(request):
     }
 
     return render(request, 'counselling_appts/appointments.html', context)
+
+
+@login_required
+def book_appointment(request):
+    '''
+    Book an appointment based on available slots
+    '''
+
+    dates_dict = create_appt_dict()
+    blocked_dates = create_fully_booked_list(dates_dict)
+
+    context = {
+    'blocked_dates': blocked_dates,
+    }
+
+    return render(request, 'counselling_appts/appointment_booking.html', context)

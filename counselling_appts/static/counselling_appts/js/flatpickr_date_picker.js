@@ -12,7 +12,7 @@ const ELEMENT_ID = "#flatpickr"
 const INCREMENT = 365
 
 
-// const blocked_dates = JSON.parse(document.getElementById('blocked_dates').textContent);
+const blocked_dates = JSON.parse(document.getElementById('blocked_dates').textContent);
 
 
 // datepicker 
@@ -24,7 +24,7 @@ flatpickr(ELEMENT_ID, {
 
         }, 
         "2022-07-15",
-        // blocked_dates
+        blocked_dates
     ],
     "locale": {
         "firstDayOfWeek": 1 // start week on Monday
