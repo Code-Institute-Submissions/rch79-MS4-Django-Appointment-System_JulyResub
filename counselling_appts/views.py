@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 
 # python functions used to send date info to the date and time pickers
-from .modules.booked_dates import create_appt_dict, create_fully_booked_list
+from .modules.booked_dates import create_appt_dict, create_fully_booked_list, create_available_timeslots
 
 #decorator to redirect non-authenticated users to login page
 from django.contrib.auth.decorators import login_required
@@ -54,10 +54,13 @@ def book_appointment(request):
     '''
 
     dates_dict = create_appt_dict()
+    time_slots = create_available_timeslots(dates_dict)
     blocked_dates = create_fully_booked_list(dates_dict)
 
     context = {
+    'dates_dict': dates_dict,
     'blocked_dates': blocked_dates,
+    'time_slots': time_slots,
     }
 
     return render(request, 'counselling_appts/appointment_booking.html', context)

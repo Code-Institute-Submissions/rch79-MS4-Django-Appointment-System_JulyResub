@@ -8,11 +8,13 @@
 {% block extra_css %}
   {{ block.super }}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="{% static 'counselling_appts/css/appointment-picker.css' %}">
 {% endblock %}
 
 {% block extra_js%}
   {{ block.super }}
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="{% static 'counselling_appts/js/appointment-picker.min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -21,14 +23,31 @@
     <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
   </form>
   <p>{{ request.user }}</p>
+  <p>Dates dict: {{ dates_dict }}</p>
   <p>Blocked DAtes: {{ blocked_dates }}</p>
   <p>Test_text: {{ test_text }}</p>
+  <p>Available time slots: {{ time_slots }}</p>
+
+  <h2>Get the current time and action via event listener</h2>
+
+		<p>
+			<label for="time-ev">Time</label>
+			<input id="time-ev" type="text" value="18:00" placeholder="h:mm" aria-live="assertive" aria-label="Use up or down arrow keys to change time">
+			<span id="action-ev-out">closed</span> /
+			<span id="time-ev-out">change the time</span>
+
+
+			<script type="text/javascript">
+
+			</script>
+		</p>
 {% endblock %}
 
 {% block postload_js %}
 {{ block.super }}
 {{ blocked_dates|json_script:"blocked_dates" }}
   <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
+  <script type="text/javascript" src="{% static 'counselling_appts/js/time_picker.js' %}"></script>
 {% endblock %}
 
 

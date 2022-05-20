@@ -23,6 +23,22 @@ def create_appt_dict():
     return dates_appt_dict
 
 
+def create_available_timeslots(dates_dictionary):
+    POSSIBLE_TIME_SLOTS = [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    remaining_timeslots = {}
+
+    for key, pair in dates_dictionary.items():
+        common_timeslots = list(set(POSSIBLE_TIME_SLOTS).intersection(set(pair)))
+        combined = POSSIBLE_TIME_SLOTS + pair
+
+        for item in common_timeslots:
+            combined = [element for element in combined if element != item]
+
+        remaining_timeslots[key] = combined
+    
+    return remaining_timeslots
+
+
 def create_fully_booked_list(dates_dictionary):
     '''
     Creates a list of dates with no more
