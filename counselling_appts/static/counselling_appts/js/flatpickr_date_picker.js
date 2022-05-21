@@ -22,10 +22,8 @@ const fp = flatpickr(ELEMENT_ID, {
             // disables weekends
             return (date.getDay() === 0 || date.getDay() === 6);
 
-        }, 
-        "2022-07-15",
-        blocked_dates
-    ],
+        } 
+    ].concat(blocked_dates),
     "locale": {
         "firstDayOfWeek": 1 // start week on Monday
     },
