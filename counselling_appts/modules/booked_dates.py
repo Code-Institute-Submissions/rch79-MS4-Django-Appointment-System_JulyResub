@@ -16,9 +16,9 @@ def create_appt_dict():
             dates_list.append(item.date_strf())
             dates_appt_dict[item.date_strf()] = []
 
-    # creates the dictonary
+    # creates the dictionary
     for item in items:
-        dates_appt_dict[item.date_strf()].append(item.time_only())
+        dates_appt_dict[item.date_strf()].append(str(item.time_only()) + ":00")
 
     return dates_appt_dict
 
