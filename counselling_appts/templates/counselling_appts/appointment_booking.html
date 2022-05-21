@@ -46,8 +46,34 @@
 {% block postload_js %}
 {{ block.super }}
 {{ blocked_dates|json_script:"blocked_dates" }}
+{{ dates_dict|json_script:"dates_dict" }}
   <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
   <script type="text/javascript" src="{% static 'counselling_appts/js/time_picker.js' %}"></script>
+
+  <script type="text/javascript">
+    fp.config.onChange.push(function() {
+      const date_dict = JSON.parse(document.getElementById('dates_dict').textContent);
+      console.log(fp.selectedDates);
+      d = fp.selectedDates[0];
+      // console.log(d);
+      // console.log(d.getFullYear());
+      // console.log(d.getMonth() + 1);
+      // console.log(d.getDate());
+      var year = d.getFullYear();
+      var month = (d.getMonth() + 1).toString().padStart(2, '0');
+      var day = d.getDate().toString().padStart(2, '0');
+      var datePicked = [year, month, day].join('-');
+      // console.log(datePicked);
+      // console.log(date_dict)
+
+      for (const [key, value] of Object.entries(date_dict)) {
+        console.log(`key: ${key} value: ${value}`);
+      }
+
+      console.log(`blocked_slots: ${date_dict[datePicked]}`)
+      
+     });
+  </script>
 {% endblock %}
 
 

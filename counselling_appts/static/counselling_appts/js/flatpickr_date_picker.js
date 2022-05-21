@@ -16,7 +16,7 @@ const blocked_dates = JSON.parse(document.getElementById('blocked_dates').textCo
 
 
 // datepicker 
-flatpickr(ELEMENT_ID, {
+const fp = flatpickr(ELEMENT_ID, {
     "disable": [
         function(date) {
             // disables weekends
