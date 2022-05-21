@@ -9,6 +9,7 @@
   {{ block.super }}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="{% static 'counselling_appts/css/appointment-picker.css' %}">
+  <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 {% endblock %}
 
 {% block extra_js%}
@@ -18,18 +19,19 @@
 {% endblock %}
 
 {% block content %}
-  <form action>
-    <label for="flatpickr">Please select the appointment date:</label><br>
-    <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
-  </form>
-  <p>{{ request.user }}</p>
-  <p>Dates dict: {{ dates_dict }}</p>
-  <p>Blocked DAtes: {{ blocked_dates }}</p>
-  <p>Test_text: {{ test_text }}</p>
-  <p>blocked_dates_str: {{ blocked_dates_str }}</p>
+    <div class="parent-div">
+      <div class="bg-opaque"></div>
+      <div class="d-flex align-items-center justify-content-center h-100 vstack gap-1 border border-dark">
+        <form action>
+          <label for="flatpickr">Please select the appointment date:</label><br>
+          <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
+        </form>
+        <div id="time-picker"></div>
+        <div id="confirm-selection"></div>
+      </div>  
 
-  <div id="time-picker"></div>
-  <div id="confirm-selection"></div>
+    </div>
+    
 {% endblock %}
 
 {% block postload_js %}
@@ -43,6 +45,7 @@
     fp.config.onChange.push(function() {
       const date_dict = JSON.parse(document.getElementById('dates_dict').textContent);
       var blocked_slots = [];
+      var timePicked = -1;
       const LUNCH_TIME = "12:00";
       var selected_time = ""
 
@@ -71,10 +74,8 @@
       // Add the time picker to the page
       $( "#time-picker" ).append(`
         <p id="time-picker-inner">
-          <label for="time-ev">Time</label>
-          <input id="time-ev" type="text" value="18:00" placeholder="h:mm" aria-live="assertive" aria-label="Use up or down arrow keys to change time">
-          <span id="action-ev-out">closed</span>
-          <span id="time-ev-out">change the time</span>
+          <label for="time-ev">Time</label><br>
+          <input id="time-ev" type="text" placeholder="h:mm" aria-live="assertive" aria-label="Use up or down arrow keys to change time">
         </p>
       `);
 
@@ -84,20 +85,26 @@
 	      interval: 60,
 	      minTime: 09,
 	      maxTime: 18,
-	      disabled: JSON.parse(json_blocked_slots)
+	      disabled: JSON.parse(json_blocked_slots),
+        title: "",
+        startTime: 09,
+        endTime: 18,
       });
+      
       // Add event listener on input field
       document.getElementById('time-ev').addEventListener('change.appo.picker', function (e) {
 	      document.getElementById('time-ev-out').innerHTML = JSON.stringify(e.time) + ', ' + JSON.stringify(e.displayTime);
       }, false);
+
       document.getElementById('time-ev').addEventListener('close.appo.picker', function (e) {
-        var timePicked = document.getElementById('time-ev').value;
-        console.log(`Selected date: ${datePicked}`)
-        console.log(`Selected time slot: ${timePicked}`)
-        confirmSelection(datePicked, timePicked);
-        document.getElementById('action-ev-out').innerHTML = 'closed';
+        if(document.getElementById('time-ev').value != "") {
+          var timePicked = document.getElementById('time-ev').value;
+          confirmSelection(datePicked, timePicked);
+        };
+        
         document.getElementById('time-picker-inner').remove();
       }, false);
+
       document.getElementById('time-ev').addEventListener('open.appo.picker', function (e) {
         document.getElementById('action-ev-out').innerHTML = 'open';
       }, false);

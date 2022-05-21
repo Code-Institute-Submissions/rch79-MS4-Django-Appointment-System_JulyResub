@@ -2,6 +2,31 @@
 
 {% block content %}
 
-<p>TEST PAGE</p>
+<style>
+    .myDiv {
+    position: relative;
+    z-index: 1;
+}
+
+.myDiv .bg {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("/media/main_image.jpg") no-repeat center center;
+    background-size: cover;
+    height: calc(100vh - 56px);
+    opacity: .25;
+    width: 100%;
+}
+</style>
+
+<div class="myDiv">
+    <div class="bg"></div>
+    Hi there
+</div>
+
 
 {% endblock content %}
