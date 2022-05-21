@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'invitations',
     'cloudinary',
     'counselling_appts',
+    'client_admin',
 ]
 
 MIDDLEWARE = [

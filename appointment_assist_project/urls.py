@@ -24,4 +24,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path("invitations/", include('invitations.urls', namespace='invitations')),
     path('', include('counselling_appts.urls')),
+    path('client_admin/', include('client_admin.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
