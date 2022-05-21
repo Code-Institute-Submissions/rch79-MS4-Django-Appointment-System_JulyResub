@@ -26,9 +26,10 @@
   <p>Dates dict: {{ dates_dict }}</p>
   <p>Blocked DAtes: {{ blocked_dates }}</p>
   <p>Test_text: {{ test_text }}</p>
-  <p>Available time slots: {{ time_slots }}</p>
+  <p>blocked_dates_str: {{ blocked_dates_str }}</p>
 
   <div id="time-picker"></div>
+  <div id="confirm-selection"></div>
 {% endblock %}
 
 {% block postload_js %}
@@ -90,9 +91,10 @@
 	      document.getElementById('time-ev-out').innerHTML = JSON.stringify(e.time) + ', ' + JSON.stringify(e.displayTime);
       }, false);
       document.getElementById('time-ev').addEventListener('close.appo.picker', function (e) {
-        selected_time = document.getElementById('time-ev').value;
+        var timePicked = document.getElementById('time-ev').value;
         console.log(`Selected date: ${datePicked}`)
-        console.log(`Selected time slot: ${selected_time}`)
+        console.log(`Selected time slot: ${timePicked}`)
+        confirmSelection(datePicked, timePicked);
         document.getElementById('action-ev-out').innerHTML = 'closed';
         document.getElementById('time-picker-inner').remove();
       }, false);
@@ -100,6 +102,26 @@
         document.getElementById('action-ev-out').innerHTML = 'open';
       }, false);
      });
+
+     function confirmSelection(selectedDate, selectedTime) {
+      $( "#confirm-selection" ).append(`
+        <p>
+          Please confirm you selection:
+        </p>
+        <p>
+          Appointment date: ${selectedDate}
+        </p>
+        <p>
+          Appointment time: ${selectedTime}
+        </p>
+        <form action="{% url 'success' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" id="id_time" name="time" value="${selectedTime}"">
+          <input type="hidden" id="id_date" name="date" value="${selectedDate}">
+          <input type="submit" value="Submit">
+        </form> 
+      `);
+     };
   </script>
 {% endblock %}
 
