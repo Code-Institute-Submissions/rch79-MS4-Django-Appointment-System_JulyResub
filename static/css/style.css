@@ -3,7 +3,7 @@ html {
 }
 
 .main-image {
-    background: url("/media/main_image.jpg") no-repeat center center;
+    background: url("https://res.cloudinary.com/doduhvijo/image/upload/v1653207302/media/main-image_lbypd4.jpg") no-repeat center center;
     background-size: cover;
     background-color: transparent;
     /* background-position-y: -5px; */
