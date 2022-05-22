@@ -3,7 +3,7 @@ html {
 }
 
 .main-image {
-    background: url("/static/main_image.jpg") no-repeat center center;
+    background: url("/media/main_image.jpg") no-repeat center center;
     background-size: cover;
     background-color: transparent;
     /* background-position-y: -5px; */
@@ -25,7 +25,7 @@ html {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("/static/main_image.jpg") no-repeat center center;
+    background: url("/media/main_image.jpg") no-repeat center center;
     background-size: cover;
     height: calc(100vh - 56px);
     opacity: .55;
