@@ -1,7 +1,13 @@
 [Try it out on Heroku](https://ms4-counselling-appts.herokuapp.com/)
 
 # PLEASE NOTE: THIS IS A WORK-IN-PROGRESS, UNFINISHED PROJECT
-
+To-do list:
+- The main feature on the date and time pickers - the blocking of unavailable slots - is implemented, but the JavaScript code needs to be cleaned up and there are some bugs that eed to be fixed
+- Implement the ability for the admin to book appointments on clients' behalf and make changes to existing appointments
+- Fully implement the email feature - right know registration invite emails are being displayed on the console
+- Style the URLS - including allauth
+- Figure out the displaying of background images on Cloudinary - I have been unable to et this to work so far
+- drop the messaging feature - will not be implemented
 
 # Therapeutics, Inc
 
@@ -83,6 +89,7 @@ The program was deployed on [Heroku]((https://www.heroku.com/)), using the follo
  - [Bootstrap](https://getbootstrap.com/) - A free and open-source CSS framework
  - [Cloudinary](https://cloudinary.com/) - A cloud-based image hosting service for websites and apps
  - [flatpickr](https://flatpickr.js.org/) - A highly customizable datetime picker for websites
+ - [Appointment Picker](https://jannicz.github.io/appointment-picker/) - A lightweight, accessible and customizable javascript timepicker.
  - [Google Fonts](https://fonts.google.com/) - A font embedding service library
  - [Font Awesome](https://fontawesome.com/) - A font and icon toolkit based on CSS
 

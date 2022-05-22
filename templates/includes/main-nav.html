@@ -19,9 +19,6 @@
                         <a class="nav-link" href="{% url 'appointments' %}">View upcoming appointments</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact_us' %}">Contact us</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
                     </li>
                     {% else %}
@@ -31,16 +28,16 @@
                     {% endif %}
             </div>
             {% if user.is_superuser %}
-            <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'display_client_admin' %}">Client Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admin:index' %}">Site Admin</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'display_client_admin' %}">Client Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">Site Admin</a>
+                        </li>
+                    </ul>
+                </div>
             {% endif %}
         </div>
     </nav>
