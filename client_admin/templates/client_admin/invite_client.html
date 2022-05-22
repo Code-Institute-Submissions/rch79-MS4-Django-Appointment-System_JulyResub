@@ -6,4 +6,12 @@
 
 <p>INVITE CLIENT</p>
 
+
+<form action="{% url 'send_invite' %}" method="POST">
+    {% csrf_token %}
+    <label for="email">Email address:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    <input type="submit" id="btn btn-success" value="Submit">
+</form> 
+
 {% endblock content %}

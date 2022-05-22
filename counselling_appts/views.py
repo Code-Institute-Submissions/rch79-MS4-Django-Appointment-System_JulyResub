@@ -71,8 +71,13 @@ def book_appointment(request):
 
     return render(request, 'counselling_appts/appointment_booking.html', context)
 
+
 @login_required
 def confirm_appointment(request):
+    '''
+    Create new Appointment object
+    '''
+
     if request.method == "POST":
         time = request.POST.get("time")
         date = request.POST.get("date")
