@@ -31,7 +31,7 @@ The interface was designed to be straightforwad and self-explanatory. It consist
 - Allows users to sign out from the site. This option is only available to authenticated users
 #### 7. Client admin
 - Allows site admins to send invitations to new users, book apointments on clients' behalf, and manage existing appointments for all clients. Option is only availabe to authenticated users with admin access.
-#### 7. Site Admin
+#### 8. Site Admin
 - Links to the Django Admin page. This option is only available to authenticated users with admin privilege
 
 ## User Stories
