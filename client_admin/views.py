@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from invitations.utils import get_invitation_model
 from django.http import HttpResponseNotFound
-from .forms import NameForm
 from counselling_appts.models import Appointment
 
 #decorator to redirect non-authenticated users to login page
