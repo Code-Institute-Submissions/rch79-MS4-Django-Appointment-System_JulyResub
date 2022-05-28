@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from invitations.utils import get_invitation_model
 from django.http import HttpResponseNotFound
+from .forms import NameForm
+from counselling_appts.models import Appointment
 
 #decorator to redirect non-authenticated users to login page
 from django.contrib.auth.decorators import login_required
@@ -10,8 +12,25 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-class AppointmentAdminPageView(generic.TemplateView):
-    template_name = 'client_admin/appointment_admin.html'
+@login_required
+def display_appointment_admin(request):
+    '''
+    Display appointment admin page
+    '''
+    if request.user.is_superuser:
+        appointments = Appointment.objects.all()
+
+        context = {
+        'appointments': appointments,
+        }
+
+        return render(request, 'client_admin/appointment_admin.html', context)
+
+    else:
+        return HttpResponseNotFound("404 error: FIle not found")
+
+    
+
 
 @login_required
 def display_client_admin(request):

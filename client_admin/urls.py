@@ -7,5 +7,5 @@ urlpatterns = [
     path('new_invite/', views.invite_new_client, name='invite_new_client'),
     path('new_invite/send', views.send_invite, name='send_invite'),
     path('new_invite/sent', views.display_invite_confirmation, name='display_invite_confirmation'),
-    path('appointment_admin/', views.AppointmentAdminPageView.as_view(), name='appointment_admin'),
+    path('appointment_admin/', views.display_appointment_admin, name='appointment_admin'),
 ]
