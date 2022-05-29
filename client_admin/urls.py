@@ -8,4 +8,5 @@ urlpatterns = [
     path('new_invite/send', views.send_invite, name='send_invite'),
     path('new_invite/sent', views.display_invite_confirmation, name='display_invite_confirmation'),
     path('appointment_admin/', views.display_appointment_admin, name='appointment_admin'),
+    path('change/<appointment_id>', views.change_appointment_status, name='change'),
 ]

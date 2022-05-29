@@ -123,7 +123,7 @@
         </p>
         <form action="{% url 'success' %}" method="POST">
           {% csrf_token %}
-          <input type="hidden" id="id_time" name="time" value="${selectedTime}"">
+          <input type="hidden" id="id_time" name="time" value="${selectedTime}">
           <input type="hidden" id="id_date" name="date" value="${selectedDate}">
           <input type="submit" value="Submit">
         </form> 

@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
-   <table class='table'>
-      <thead>
-         <tr>
+   <table class='table table-bordered '>
+      <thead >
+         <tr class="table-primary">
             <th scope='col'>Appointment Date</th>
             <th scope='col'>Client Name</th>
             <th scope='col'>Email Address</th>
@@ -19,21 +19,24 @@
          <tr>
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.client.first_name }} {{ appointment.client.last_name }}</td>
-            <td><a href = "mailto: {{ appointment.client.email }}">{{ appointment.client.email }}</a></td>
+            <td><a href="mailto: {{ appointment.client.email }}">{{ appointment.client.email }}</a></td>
             <td>
                {% if appointment.status == 0 %}
-                  <span class="badge bg-warning text-dark">{{ appointment.get_status_display }}</span>
+                  <span class="badge rounded-pill bg-warning text-dark">{{ appointment.get_status_display }}</span>
                {% elif appointment.status == 1 %}
-                  <span class="badge bg-success">{{ appointment.get_status_display }}</span>
+                  <span class="badge rounded-pill bg-success">{{ appointment.get_status_display }}</span>
                {% else %}
-                  <span class="badge bg-danger">{{ appointment.get_status_display }}</span>
+                  <span class="badge rounded-pill bg-danger">{{ appointment.get_status_display }}</span>
                {% endif %}
             </td>
             <td>{{ appointment.comment }}</td>
             <td class="text-center">
-               <div class="d-inline"><button type="button" class="btn btn-warning">Pending</button></div>
-               <div class="d-inline"><button type="button" class="btn btn-success">Confirm</button></div>
-               <div class="d-inline"><button type="button" class="btn btn-danger">Cancel</button></div>
+               <form action="" method="POST">
+                  {% csrf_token %}
+                  <div class="d-inline"><a href="{% url 'change' appointment.id %}"><button type="submit" class="btn btn-warning" name="pending" value="0">Pending</button></a></div>
+                  <div class="d-inline"><a href="/change/{{ appointment.id }}"><button type="submit" class="btn btn-success" name="confirm" value="1">Confirm</button></a></div>
+                  <div class="d-inline"><a href="/change/{{ appointment.id }}"><button type="submit" class="btn btn-danger" name="cancel" value="2">Cancel</button></a></div>
+               </form>
             </td>
          </tr>
          {% endfor %}

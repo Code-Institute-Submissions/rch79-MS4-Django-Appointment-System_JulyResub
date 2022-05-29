@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 from invitations.utils import get_invitation_model
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, HttpResponseForbidden
 from counselling_appts.models import Appointment
 
 #decorator to redirect non-authenticated users to login page
@@ -26,7 +26,7 @@ def display_appointment_admin(request):
         return render(request, 'client_admin/appointment_admin.html', context)
 
     else:
-        return HttpResponseNotFound("404 error: FIle not found")
+        return HttpResponseForbidden("403 error: Unauthorized")
 
     
 
@@ -83,3 +83,20 @@ def send_invite(request):
             return redirect(display_invite_confirmation)
     else:
         return HttpResponseNotFound("404 error: FIle not found")
+
+
+@login_required
+def change_appointment_status(request, value):
+    '''
+    Change appointment status
+    '''
+
+    if request.user.is_superuser:
+        if request.method == "POST":
+            print('hello world')
+            print("Item ID: " + appointment_id)
+            PRINT("vALUE: " + value )
+            return render(request, 'client_admin/appointment_admin.html')
+
+    else:
+        return HttpResponseForbidden("403 error: Unauthorized")
