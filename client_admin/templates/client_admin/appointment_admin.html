@@ -31,11 +31,16 @@
             </td>
             <td>{{ appointment.comment }}</td>
             <td class="text-center">
-               <form action="" method="POST">
+               <form action="{% url 'change' appointment.id %}" method="POST">
                   {% csrf_token %}
-                  <div class="d-inline"><a href="{% url 'change' appointment.id %}"><button type="submit" class="btn btn-warning" name="pending" value="0">Pending</button></a></div>
-                  <div class="d-inline"><a href="/change/{{ appointment.id }}"><button type="submit" class="btn btn-success" name="confirm" value="1">Confirm</button></a></div>
-                  <div class="d-inline"><a href="/change/{{ appointment.id }}"><button type="submit" class="btn btn-danger" name="cancel" value="2">Cancel</button></a></div>
+                  <div class="d-inline">
+                     <a href="{% url 'change' appointment.id %}"><button type="submit" class="btn btn-warning" name="pending" value="0">Pending</button></a>
+                  </div>
+                  <div class="d-inline">
+                     <a href="{% url 'change' appointment.id %}"><button type="submit" class="btn btn-success" name="confirm" value="1">Confirm</button></a>
+                  </div>
+                  <div class="d-inline">
+                     <a href="/change/{{ appointment.id }}"><button type="submit" class="btn btn-danger" name="cancel" value="2">Cancel</button></a></div>
                </form>
             </td>
          </tr>

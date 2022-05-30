@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from invitations.utils import get_invitation_model
-from django.http import HttpResponseNotFound, HttpResponseForbidden
+from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponseRedirect
 from counselling_appts.models import Appointment
 
-#decorator to redirect non-authenticated users to login page
+# decorator to redirect non-authenticated users to login page
 from django.contrib.auth.decorators import login_required
 
 
@@ -20,15 +20,13 @@ def display_appointment_admin(request):
         appointments = Appointment.objects.all()
 
         context = {
-        'appointments': appointments,
+            'appointments': appointments,
         }
 
         return render(request, 'client_admin/appointment_admin.html', context)
 
     else:
         return HttpResponseForbidden("403 error: Unauthorized")
-
-    
 
 
 @login_required
@@ -72,7 +70,7 @@ def send_invite(request):
     '''
     Send invite to new client
     '''
-    
+
     if request.user.is_superuser:
         if request.method == "POST":
             Invitation = get_invitation_model()
@@ -86,17 +84,25 @@ def send_invite(request):
 
 
 @login_required
-def change_appointment_status(request, value):
+def change_appointment_status(request, appointment_id):
     '''
     Change appointment status
     '''
 
     if request.user.is_superuser:
         if request.method == "POST":
-            print('hello world')
-            print("Item ID: " + appointment_id)
-            PRINT("vALUE: " + value )
-            return render(request, 'client_admin/appointment_admin.html')
+
+            appointment = get_object_or_404(Appointment, id=appointment_id)
+            if "pending" in request.POST:
+                appointment.status = 0
+            elif "confirm" in request.POST:
+                appointment.status = 1
+            else:
+                appointment.status = 2
+            appointment.save()
+
+            # redirects to page that called the function
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     else:
         return HttpResponseForbidden("403 error: Unauthorized")
