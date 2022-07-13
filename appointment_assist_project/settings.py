@@ -113,7 +113,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_FORMS = {
-'signup': 'counselling_appts.forms.CustomSignupForm',
+    'signup': 'counselling_appts.forms.CustomSignupForm',
 }
 
 WSGI_APPLICATION = 'appointment_assist_project.wsgi.application'
