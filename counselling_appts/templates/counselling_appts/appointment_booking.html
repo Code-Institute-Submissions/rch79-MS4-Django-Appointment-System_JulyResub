@@ -8,24 +8,28 @@
 {% block extra_css %}
   {{ block.super }}
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" type="text/css" href="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722323/static/counselling_appts/css/appointment-picker.ab703f11d293.css">
+  <link rel="stylesheet" href="{% static 'counselling_appts/css/appointment-picker.css' %}">
+  {% comment %} <link rel="stylesheet" type="text/css" href="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722323/static/counselling_appts/css/appointment-picker.ab703f11d293.css"> {% endcomment %}
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 {% endblock %}
 
 {% block extra_js%}
   {{ block.super }}
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://res.cloudinary.com/doduhvijo/raw/upload/v1653206578/static/counselling_appts/js/appointment-picker.min.fa45d951cead.js"></script>
+  {% comment %} <script src="https://res.cloudinary.com/doduhvijo/raw/upload/v1653206578/static/counselling_appts/js/appointment-picker.min.fa45d951cead.js"></script> {% endcomment %}
+  <script src="{% static 'counselling_appts/js/appointment-picker.min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
     <div class="parent-div">
       <div class="bg-opaque"></div>
       <div class="d-flex align-items-center justify-content-center h-100 vstack gap-1 border border-dark">
+      <div id="date-picker">
         <form action>
           <label for="flatpickr">Please select the appointment date:</label><br>
           <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
         </form>
+      </div>
         <div id="time-picker"></div>
         <div id="confirm-selection"></div>
       </div>  
@@ -38,7 +42,8 @@
 {{ block.super }}
 {{ blocked_dates|json_script:"blocked_dates" }}
 {{ dates_dict|json_script:"dates_dict" }}
-  <script type="text/javascript" src="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722324/static/counselling_appts/js/flatpickr_date_picker.945f63fc8819.js"></script>
+  {% comment %} <script type="text/javascript" src="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722324/static/counselling_appts/js/flatpickr_date_picker.945f63fc8819.js"></script> {% endcomment %}
+  <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
 
   <script type="text/javascript">
     // will be triggered when date is selected by user
@@ -74,7 +79,7 @@
       // Add the time picker to the page
       $( "#time-picker" ).append(`
         <p id="time-picker-inner">
-          <label for="time-ev">Time</label><br>
+          <label for="time-ev">Please seect the appointment Time</label><br>
           <input id="time-ev" type="text" placeholder="h:mm" aria-live="assertive" aria-label="Use up or down arrow keys to change time">
         </p>
       `);
@@ -90,6 +95,11 @@
         startTime: 09,
         endTime: 18,
       });
+
+      // Closes date picker after date has been selected
+      fp.close();
+      fp.destroy();
+      document.getElementById('date-picker').remove();
       
       // Add event listener on input field
       document.getElementById('time-ev').addEventListener('change.appo.picker', function (e) {
@@ -126,7 +136,8 @@
           <input type="hidden" id="id_time" name="time" value="${selectedTime}">
           <input type="hidden" id="id_date" name="date" value="${selectedDate}">
           <input type="submit" value="Submit">
-        </form> 
+        </form>
+        <button onClick="window.location.reload();">Start Over</button>
       `);
      };
   </script>
