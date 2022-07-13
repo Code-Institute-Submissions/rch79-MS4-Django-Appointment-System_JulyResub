@@ -8,14 +8,14 @@
 {% block extra_css %}
   {{ block.super }}
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'counselling_appts/css/appointment-picker.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/appointment-picker.css' %}">
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 {% endblock %}
 
 {% block extra_js%}
   {{ block.super }}
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="{% static 'counselling_appts/js/appointment-picker.min.js' %}"></script>
+  <script src="{% static 'js/appointment-picker.min.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -38,7 +38,7 @@
 {{ block.super }}
 {{ blocked_dates|json_script:"blocked_dates" }}
 {{ dates_dict|json_script:"dates_dict" }}
-  <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/flatpickr_date_picker.js' %}"></script>
 
   <script type="text/javascript">
     // will be triggered when date is selected by user
