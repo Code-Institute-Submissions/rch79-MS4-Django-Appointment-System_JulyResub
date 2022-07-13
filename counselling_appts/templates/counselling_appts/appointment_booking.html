@@ -21,20 +21,20 @@
 {% endblock %}
 
 {% block content %}
-    <div class="parent-div">
+    <section class="parent-div">
       <div class="bg-opaque"></div>
       <div class="d-flex align-items-center justify-content-center h-100 vstack gap-1 border border-dark">
-      <div id="date-picker">
-        <form action>
-          <label for="flatpickr">Please select the appointment date:</label><br>
-          <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
-        </form>
-      </div>
+        <div id="date-picker">
+          <form action>
+            <label for="flatpickr">Please select the appointment date:</label><br>
+            <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
+          </form>
+        </div>
         <div id="time-picker"></div>
         <div id="confirm-selection"></div>
       </div>  
 
-    </div>
+    </section>
     
 {% endblock %}
 
