@@ -1,5 +1,4 @@
-// Retrieves tomorrow's date to be used as the minimum
-// date on the date picker
+
 const TODAY = new Date()
 const TOMORROW = new Date()
 TOMORROW.setDate(TOMORROW.getDate() + 1)
