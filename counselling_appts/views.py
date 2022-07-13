@@ -1,14 +1,16 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
 from django.views import generic
-from datetime import datetime
+
+# decorator to redirect non-authenticated users to login page
+from django.contrib.auth.decorators import login_required
 
 # python functions used to send date info to the date and time pickers
 from .modules.booked_dates import create_appt_dict, create_fully_booked_list, create_available_timeslots
 
-#decorator to redirect non-authenticated users to login page
-from django.contrib.auth.decorators import login_required
 
 from .models import Appointment, User
+
 
 class HomePageView(generic.TemplateView):
     template_name = 'index.html'

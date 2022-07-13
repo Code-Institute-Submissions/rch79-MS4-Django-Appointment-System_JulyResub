@@ -50,6 +50,6 @@ def create_fully_booked_list(dates_dictionary):
 
     for key, pair in dates_dictionary.items():
         if len(pair) >= 9:
-            fully_booked_dates.append(str(key));
+            fully_booked_dates.append(str(key))
 
     return fully_booked_dates

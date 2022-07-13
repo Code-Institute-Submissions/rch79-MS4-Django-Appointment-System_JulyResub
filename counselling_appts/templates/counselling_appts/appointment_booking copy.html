@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}
+  - Appointment Booking
+{% endblock %}
+
+{% block extra_css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="{% static 'counselling_appts/css/appointment-picker.css' %}">
+  <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+{% endblock %}
+
+{% block extra_js%}
+  {{ block.super }}
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="{% static 'counselling_appts/js/appointment-picker.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="parent-div">
+      <div class="bg-opaque"></div>
+      <div class="d-flex align-items-center justify-content-center h-100 vstack gap-1 border border-dark">
+        <form action>
+          <label for="flatpickr">Please select the appointment date:</label><br>
+          <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
+        </form>
+        <div id="time-picker"></div>
+        <div id="confirm-selection"></div>
+      </div>  
+
+    </div>
+    
+{% endblock %}
+
+{% block postload_js %}
+{{ block.super }}
+{{ blocked_dates|json_script:"blocked_dates" }}
+{{ dates_dict|json_script:"dates_dict" }}
+  <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
+
+  <script type="text/javascript">
+    // will be triggered when date is selected by user
+    fp.config.onChange.push(function() {
+      const date_dict = JSON.parse(document.getElementById('dates_dict').textContent);
+      var blocked_slots = [];
+      var timePicked = -1;
+      const LUNCH_TIME = "12:00";
+      var selected_time = ""
+
+      // converts selected date to YYYY-MM-DD format
+      d = fp.selectedDates[0];
+      var year = d.getFullYear();
+      var month = (d.getMonth() + 1).toString().padStart(2, '0');
+      var day = d.getDate().toString().padStart(2, '0');
+      var datePicked = [year, month, day].join('-');
+
+      // Add already-booked time slots (if any)
+      // to the blocked time slots array
+      if (datePicked in date_dict) {
+        blocked_slots = date_dict[datePicked];
+      }
+
+      // Append the lunch time slot to the 
+      // blocked time slots array
+      blocked_slots.push(LUNCH_TIME);
+
+      // converts blocked time slots arry into JSON format
+      // so it can be parsed into the time picker disabled
+      // time configuration setting
+      let json_blocked_slots = JSON.stringify(blocked_slots);
+
+      // Add the time picker to the page
+      $( "#time-picker" ).append(`
+        <p id="time-picker-inner">
+          <label for="time-ev">Time</label><br>
+          <input id="time-ev" type="text" placeholder="h:mm" aria-live="assertive" aria-label="Use up or down arrow keys to change time">
+        </p>
+      `);
+
+      // Initialize a new time picker using the array of blocked time slots
+      // created above. Blocked time slots will be greyed out.
+      ap = new AppointmentPicker(document.getElementById('time-ev'), {
+	      interval: 60,
+	      minTime: 09,
+	      maxTime: 18,
+	      disabled: JSON.parse(json_blocked_slots),
+        title: "",
+        startTime: 09,
+        endTime: 18,
+      });
+      
+      // Add event listener on input field
+      document.getElementById('time-ev').addEventListener('change.appo.picker', function (e) {
+	      document.getElementById('time-ev-out').innerHTML = JSON.stringify(e.time) + ', ' + JSON.stringify(e.displayTime);
+      }, false);
+
+      document.getElementById('time-ev').addEventListener('close.appo.picker', function (e) {
+        if(document.getElementById('time-ev').value != "") {
+          var timePicked = document.getElementById('time-ev').value;
+          confirmSelection(datePicked, timePicked);
+        };
+        
+        document.getElementById('time-picker-inner').remove();
+      }, false);
+
+      document.getElementById('time-ev').addEventListener('open.appo.picker', function (e) {
+        document.getElementById('action-ev-out').innerHTML = 'open';
+      }, false);
+     });
+
+     function confirmSelection(selectedDate, selectedTime) {
+      $( "#confirm-selection" ).append(`
+        <p>
+          Please confirm you selection:
+        </p>
+        <p>
+          Appointment date: ${selectedDate}
+        </p>
+        <p>
+          Appointment time: ${selectedTime}
+        </p>
+        <form action="{% url 'success' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" id="id_time" name="time" value="${selectedTime}">
+          <input type="hidden" id="id_date" name="date" value="${selectedDate}">
+          <input type="submit" value="Submit">
+        </form> 
+      `);
+     };
+  </script>
+{% endblock %}
+
+
+
+
+
