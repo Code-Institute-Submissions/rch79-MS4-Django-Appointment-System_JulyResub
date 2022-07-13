@@ -92,6 +92,7 @@ The program was deployed on [Heroku]((https://www.heroku.com/)), using the follo
  - [Appointment Picker](https://jannicz.github.io/appointment-picker/) - A lightweight, accessible and customizable javascript timepicker.
  - [Google Fonts](https://fonts.google.com/) - A font embedding service library
  - [Font Awesome](https://fontawesome.com/) - A font and icon toolkit based on CSS
+ - [Unsplash](https://unsplash.com) - Unsplash is a website dedicated to sharing stock photography under the Unsplash license. Source of the [background image](https://unsplash.com/photos/Uq3gTiPlqRo)
 
 ## Acknowledgements
 - Thank you to the Code Institute staff - their guidance and materials are always top notch!

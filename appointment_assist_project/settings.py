@@ -54,7 +54,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
- 
+
+    # other apps
+    'crispy_forms',
     'invitations',
     'cloudinary',
     'counselling_appts',
