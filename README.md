@@ -90,6 +90,7 @@ The program was deployed on [Heroku]((https://www.heroku.com/)), using the follo
  - [Cloudinary](https://cloudinary.com/) - A cloud-based image hosting service for websites and apps
  - [flatpickr](https://flatpickr.js.org/) - A highly customizable datetime picker for websites
  - [Appointment Picker](https://jannicz.github.io/appointment-picker/) - A lightweight, accessible and customizable javascript timepicker.
+ - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) - Control the rendering behavior of Django forms
  - [Google Fonts](https://fonts.google.com/) - A font embedding service library
  - [Font Awesome](https://fontawesome.com/) - A font and icon toolkit based on CSS
  - [Unsplash](https://unsplash.com) - Unsplash is a website dedicated to sharing stock photography under the Unsplash license. Source of the [background image](https://unsplash.com/photos/Uq3gTiPlqRo)
