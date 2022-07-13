@@ -3,9 +3,10 @@ html {
 }
 
 .main-image {
-    background: url("https://res.cloudinary.com/doduhvijo/image/upload/v1653210285/static/main_image.e3fd597c10ce.jpg") no-repeat center center;
+    background: url(https://res.cloudinary.com/doduhvijo/image/upload/v1653210285/static/main_image.e3fd597c10ce.jpg) no-repeat center center;
     background-size: cover;
     background-color: transparent;
+    /* background-position-y: -5px; */
     height: calc(100vh - 56px);
     text-align: center;
     display:block;
