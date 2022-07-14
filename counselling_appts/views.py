@@ -86,7 +86,7 @@ def confirm_appointment(request):
         datetime_str = date + " " + time
         appt_date = datetime.strptime(datetime_str, "%Y-%m-%d %H:%M")
         client = request.user
-        Appointment.objects.create(client=client, date=appt_date, status=0)
+        Appointment.objects.create(client=client, date=appt_date, status=1)
 
         return redirect(display_confirmation_page)
 

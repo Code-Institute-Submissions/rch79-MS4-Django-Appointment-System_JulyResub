@@ -16,7 +16,19 @@ Mental Health patients who wish to book an appointment with their counsellor.
 - Authenticated clients are given the option to book appointments, view their appointments, and signing out:
 
 
-- Super users are given the option to view appointments for all clients, and signing out:
+- Super users are given the option to access the administrative page, the built-in Django admin page, view appointments for all clients, and signing out:
+
+- __Appointment booking__
+- Clients are shown available dates and timeslots. After making their selection they are given an option to submit the appointment request or start over. An acknowledgement message is displayed after the appointment request is submitted
+
+- __View appointments__
+- Clients are shown their appointments. Counsellors (superusers) will be shown appointments for all clients. The appointment status is also shown:
+
+- __Client admin__
+- On this page counselors are able to send site registration links to new clients, and edit existing appointmets (delete them pr change their status):
+
+- __Sign out__
+
 
 ## User Goals
 - Users should be able to easily book appointments and view their booking status. Only available date and time slots will be presented as choices.

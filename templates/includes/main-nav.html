@@ -12,7 +12,7 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
-                        {% if not user.is_authenticated %}
+                        {% if not user.is_superuser %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'appointment_booking' %}">Book an appointment</a>
                             </li>
