@@ -1,14 +1,24 @@
-{% extends 'base.html' %} 
+{% extends "base.html" %}
 {% load static %}
+
+{% block extra_title %}
+    - Appointment Admin
+{% endblock %}
 
 
 {% block content %}
-
-<p>CLIENT ADMIN</p>
-<p>
-    <a href="{% url 'invite_new_client' %}">Send registration invite to new client</a>
-</p>
-<p>
-    <a href="{% url 'appointment_admin' %}">Manage appointments</a>
-</p>
+<section class="parent-div">
+    <div class="bg-opaque"></div>
+    <div class="container d-flex w-25 h-100 ms-5 align-items-center">
+        <div class="row">
+            <div class="text-left">
+                <h1 class="fw-bold">Client Admin</h1>
+                <hr>
+            </div>
+            <div class="btn-group-vertical">
+                <a class="btn btn-primary" href="{% url 'invite_new_client' %}" role="button">New client registration</a>
+                <a class="btn btn-info" href="{% url 'appointment_admin' %}" role="button">Manage appointments</a>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
