@@ -66,9 +66,9 @@ def book_appointment(request):
         blocked_dates = create_fully_booked_list(dates_dict)
 
         context = {
-        'dates_dict': dates_dict,
-        'blocked_dates': blocked_dates,
-        'time_slots': time_slots,
+            'dates_dict': dates_dict,
+            'blocked_dates': blocked_dates,
+            'time_slots': time_slots,
         }
 
     return render(request, 'counselling_appts/appointment_booking.html', context)

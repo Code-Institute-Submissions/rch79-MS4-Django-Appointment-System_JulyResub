@@ -1,11 +1,23 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}
+    - Appointment Confirmation
+{% endblock %}
+
 {% block content %}
-
-<p>YOUR APPOINTMENT IS CONFIRMED</p>
-<p>
-    Click <a href="{% url 'appointments' %}">here</a> to view your appointments
-</p>
-
+    <section class="parent-div">
+        <div class="bg-opaque"></div>
+        <div class="container d-flex w-50 h-100 ms-5 align-items-center">
+            <div class="row">
+                <div class="text-center">
+                    <h1 class="fw-bold">Your Appointment is Confirmed</h1>
+                    <hr>
+                </div>
+                <div class="text-center">
+                    Click <a href="{% url 'appointments' %}">here</a> to view your appointments
+                </div>
+            </div>
+        <div>
+    </section>
 {% endblock content %}
