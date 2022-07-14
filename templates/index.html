@@ -28,8 +28,12 @@
                 {% endif %}
                 {% if user.is_authenticated %}
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a class="btn btn-dark" href="{% url 'appointment_booking' %}" role="button">Book an appointment</a>
-                        <a class="btn btn-dark" href="{% url 'appointments' %}" role="button">View your appointments</a>
+                        {% if user.is_superuser %}
+                            <a class="btn btn-success" href="{% url 'display_client_admin' %}" role="button">Client Admin</a>
+                        {% else %}
+                            <a class="btn btn-dark" href="{% url 'appointment_booking' %}" role="button">Book an appointment</a>
+                        {% endif%}
+                        <a class="btn btn-dark" href="{% url 'appointments' %}" role="button">View appointments</a>
                         <a class="btn btn-dark" href="{% url 'account_logout' %}" role="button">Sign out</a>
                     </div>
                 {% endif %}

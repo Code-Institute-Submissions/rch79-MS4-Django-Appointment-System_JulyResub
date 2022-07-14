@@ -8,11 +8,21 @@ This is a basic appointment scheduling system for a fictional mental health prac
 
 Mental Health patients who wish to book an appointment with their counsellor.
 
+### Features
+- __Main page__
+- The first page users seee when connecting to the site. Unauthenticated clients are presented with a link to sign in to the site:
+
+
+- Authenticated clients are given the option to book appointments, view their appointments, and signing out:
+
+
+- Super users are given the option to view appointments for all clients, and signing out:
+
 ## User Goals
 - Users should be able to easily book appointments and view their booking status. Only available date and time slots will be presented as choices.
 
 ## Admin (Counsellor) Goals
-- The site admin (aka the counsellor) should be able to view all the upcoming appointmentsand delete existing appointments.
+- The site admin (aka the counsellor) should be able to view all the upcoming appointments and delete existing appointments.
 
 ## Structure
 The interface was designed to be straightforwad and self-explanatory. It consists of a main menu that presents the user the following options:

@@ -12,19 +12,21 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'appointment_booking' %}">Book an appointment</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'appointments' %}">View appointments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
-                    </li>
+                        {% if not user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'appointment_booking' %}">Book an appointment</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'appointments' %}">View appointments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
+                        </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+                        </li>
                     {% endif %}
             </div>
             {% if user.is_superuser %}
