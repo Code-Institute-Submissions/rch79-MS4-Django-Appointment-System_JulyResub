@@ -2,13 +2,12 @@
 {% load static %}
 
 {% block content %}
-   <table class='table'>
+   <table class='table table-bordered'>
       <thead>
-         <tr>
+         <tr class="table-primary">
             <th scope='col'>Appointment Date</th>
             {% if user.is_superuser %}<th scope='col'>Client Name</th>{% endif %}
             <th scope='col'>Appointment Status</th>
-            <th scope='col'>Comments</th>
          </tr>
       </thead>
       <tbody>
@@ -16,8 +15,7 @@
          <tr>
             <td>{{ appointment.date }}</td>
             {% if user.is_superuser %}<td>{{ appointment.client }}</td>{% endif %}
-            <td>{{ appointment.status }}</td>
-            <td>{{ appointment.comment }}</td>
+            <td>{{ appointment.get_status_display }}</td>
          </tr>
          {% endfor %}
       </tbody>
