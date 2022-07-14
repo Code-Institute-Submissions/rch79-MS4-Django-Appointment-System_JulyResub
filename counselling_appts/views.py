@@ -16,18 +16,9 @@ class HomePageView(generic.TemplateView):
     template_name = 'index.html'
 
 
-class MessageView(generic.TemplateView):
-    template_name = 'contact.html'
-
-
 class AppointmentBookingView(generic.TemplateView):
     template_name = 'counselling_appts/appointment_booking.html'
 
-
-
-## test view - delete before deployment
-class TestView(generic.TemplateView):
-    template_name = 'counselling_appts/test_template.html'
 
 @login_required
 def display_confirmation_page(request):

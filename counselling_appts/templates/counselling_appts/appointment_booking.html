@@ -8,16 +8,15 @@
 {% block extra_css %}
   {{ block.super }}
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="{% static 'counselling_appts/css/appointment-picker.css' %}">
-  {% comment %} <link rel="stylesheet" type="text/css" href="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722323/static/counselling_appts/css/appointment-picker.ab703f11d293.css"> {% endcomment %}
+  <link rel="stylesheet" type="text/css" href="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722323/static/counselling_appts/css/appointment-picker.ab703f11d293.css">
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 {% endblock %}
 
 {% block extra_js%}
   {{ block.super }}
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  {% comment %} <script src="https://res.cloudinary.com/doduhvijo/raw/upload/v1653206578/static/counselling_appts/js/appointment-picker.min.fa45d951cead.js"></script> {% endcomment %}
-  <script src="{% static 'counselling_appts/js/appointment-picker.min.js' %}"></script>
+  <script src="https://res.cloudinary.com/doduhvijo/raw/upload/v1653206578/static/counselling_appts/js/appointment-picker.min.fa45d951cead.js"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -48,8 +47,8 @@
 {{ block.super }}
 {{ blocked_dates|json_script:"blocked_dates" }}
 {{ dates_dict|json_script:"dates_dict" }}
-  {% comment %} <script type="text/javascript" src="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722324/static/counselling_appts/js/flatpickr_date_picker.945f63fc8819.js"></script> {% endcomment %}
-  <script type="text/javascript" src="{% static 'counselling_appts/js/flatpickr_date_picker.js' %}"></script>
+  <script type="text/javascript" src="https://res.cloudinary.com/doduhvijo/raw/upload/v1657722324/static/counselling_appts/js/flatpickr_date_picker.945f63fc8819.js"></script>
+
 
   <script type="text/javascript">
     // will be triggered when date is selected by user

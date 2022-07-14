@@ -4,23 +4,11 @@ html {
 
 .main-image {
     background: url(https://res.cloudinary.com/doduhvijo/image/upload/v1653210285/static/main_image.e3fd597c10ce.jpg) no-repeat center center;
-    /* background: url("/media/main_image.jpg") no-repeat center center; */
     background-size: cover;
     background-color: transparent;
-    /* background-position-y: -5px; */
     height: calc(100vh - 56px);
-    /* text-align: center; */
-    /* display:block; */
-    z-index: -1;
-    /* position: absolute; */
-    /* width: 100%; */
 }
 
-/* .overlay {
-    z-index: 1;
-    position: fixed;
-    text-align: bottom;
-} */
 .parent-div {
     position: relative;
     z-index: 1;
@@ -35,7 +23,6 @@ html {
     left: 0;
     right: 0;
     background: url(https://res.cloudinary.com/doduhvijo/image/upload/v1653210285/static/main_image.e3fd597c10ce.jpg) no-repeat center center;
-    /* background: url("/media/main_image.jpg") no-repeat center center; */
     background-size: cover;
     height: calc(100vh - 56px);
     opacity: .55;
