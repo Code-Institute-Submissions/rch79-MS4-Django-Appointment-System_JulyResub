@@ -1,11 +1,23 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}
+    - Invite Confirmation
+{% endblock %}
+
 {% block content %}
-
-<p>INVITE SENT!</p>
-<p>
-    Click <a href="{% url 'display_client_admin' %}">here</a> to return to client admin
-</p>
-
+    <section class="parent-div">
+        <div class="bg-opaque"></div>
+        <div class="container d-flex w-50 h-100 ms-5 align-items-center">
+            <div class="row">
+                <div class="text-center">
+                    <h1 class="fw-bold">Invite succesfully sent</h1>
+                    <hr>
+                </div>
+                <div class="text-center">
+                    Click <a href="{% url 'display_client_admin' %}">here</a> to return to the admin page.
+                </div>
+            </div>
+        <div>
+    </section>
 {% endblock content %}
