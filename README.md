@@ -10,12 +10,12 @@ Mental Health patients who wish to book an appointment with their counsellor.
 
 ### Features
 - __Main page__
-- The first page users seee when connecting to the site. Unauthenticated clients are presented with a link to sign in to the site:
+  - The first page users seee when connecting to the site. Unauthenticated clients are presented with a link to sign in to the site:
 
-![Main page](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/01_main_page.png)
+    ![Main page](https://github.com/rch79/MS4-Django-Appointment-System/blob/9b11871fabc8bccfe30793fb37cc7e69cfd1a8fd/media/screenshots/01_main_page.png?raw=true)
 
-- Authenticated clients are given the option to book appointments, view their appointments, and signing out:
-
+  - Authenticated clients are given the option to book appointments, view their appointments, and signing out:
+    ![Authenticated main page](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/02_non_admin_main_page.png?raw=true)
 
 - Super users are given the option to access the administrative page, the built-in Django admin page, view appointments for all clients, and signing out:
 
