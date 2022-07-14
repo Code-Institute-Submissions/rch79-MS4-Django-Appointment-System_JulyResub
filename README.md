@@ -14,19 +14,41 @@ Mental Health patients who wish to book an appointment with their counsellor.
 
     ![Main page](https://github.com/rch79/MS4-Django-Appointment-System/blob/9b11871fabc8bccfe30793fb37cc7e69cfd1a8fd/media/screenshots/01_main_page.png?raw=true)
 
+
   - Authenticated clients are given the option to book appointments, view their appointments, and signing out:
     ![Authenticated main page](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/02_non_admin_main_page.png?raw=true)
 
-- Super users are given the option to access the administrative page, the built-in Django admin page, view appointments for all clients, and signing out:
+  - Super users are given the option to access the administrative page, the built-in Django admin page, view appointments for all clients, and signing out:
+    ![Authenticated super user main page](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/13_main_page_superuser.png?raw=true)
 
 - __Appointment booking__
-- Clients are shown available dates and timeslots. After making their selection they are given an option to submit the appointment request or start over. An acknowledgement message is displayed after the appointment request is submitted
+  - Clients are shown available dates and timeslots. After making their selection they are given an option to submit the appointment request or start over. An acknowledgement message is displayed after the appointment request is submitted:
+    ![Booking](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/03_appointment_booking.png?raw=true)
+
+    ![Confirmation](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/04_appointment_selection_confirmation.png?raw=true)
+
+    ![Acknowledgement](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/05_appointment_acknowledgement.png?raw=true)
+
 
 - __View appointments__
-- Clients are shown their appointments. Counsellors (superusers) will be shown appointments for all clients. The appointment status is also shown:
+  - Clients are shown their appointments. Counsellors (superusers) will be shown appointments for all clients. The appointment status is also shown:
+    ![View Appt Client](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/06_view_appointment_client.png?raw=true)
+
+    ![View Appt Admin](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/07_view_appointments_superuser.png?raw=true)
 
 - __Client admin__
-- On this page counselors are able to send site registration links to new clients, and edit existing appointmets (delete them pr change their status):
+  - On this page counselors are able to send site registration links to new clients, and edit existing appointmets (delete them or change their status):
+    ![Client Admin](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/08_client%20admin.png?raw=true)
+
+    ![New Client Reg](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/09_invite_new_client.png?raw=true)
+
+    ![Appt Admin](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/10_manage_appointments.png?raw=true)
+
+- __Sign Up__
+  - On this page new clients can sign up for a new account:
+    ![Sign Up](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/12_sign_up.png?raw=true)
+
+
 
 - __Sign out__
 
