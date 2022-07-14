@@ -1,27 +1,18 @@
 [Try it out on Heroku](https://ms4-counselling-appts.herokuapp.com/)
 
-# PLEASE NOTE: THIS IS A WORK-IN-PROGRESS, UNFINISHED PROJECT
-To-do list:
-- The main feature on the date and time pickers - the blocking of unavailable slots - is implemented, but the JavaScript code needs to be cleaned up and there are some bugs that eed to be fixed
-- Implement the ability for the admin to book appointments on clients' behalf and make changes to existing appointments
-- Fully implement the email feature - right know registration invite emails are being displayed on the console
-- Style the URLS - including allauth
-- Figure out the displaying of background images on Cloudinary - I have been unable to et this to work so far
-- drop the messaging feature - will not be implemented
-
 # Therapeutics, Inc
 
-This is a basic appointment scheduling system for a fictional mental health practice called "Therapeutics Inc". Patients can log in to schedule an appointment or view their upcoming appointments. Appointments are offered in 1 hour increments, from 9am to 6pm. Each session lasts 1 hour. The councillor can log in and view all upcoming appointments for all registered clients and change the appointment status. Registration is invite-only; New clients will be sent a registration link via email after their initial consultation (which must be booked via phone). 
+This is a basic appointment scheduling system for a fictional mental health practice called "Therapeutics Inc". Patients can log in to schedule an appointment or view their appointments. Appointments are offered in 1 hour increments, from 9am to 5pm. Each session lasts 1 hour. The counsellor is able view all appointments for all registered clients and change the appointment status, and delete appointments as needed. Registration is invite-only; New clients will be sent a registration link via email after their initial consultation (which must be booked via phone). 
 
 ## Target Audience
 
-Mental Health patients who wish to book an appointment with their mental health.
+Mental Health patients who wish to book an appointment with their counsellor.
 
 ## User Goals
 - Users should be able to easily book appointments and view their booking status. Only available date and time slots will be presented as choices.
 
 ## Admin (Counsellor) Goals
-- The site admin (aka the counsellor) should be able to view all the upcoming appointments, change appointment status, book appointments on behalf og registered clients and send invitations to new clients.
+- The site admin (aka the counsellor) should be able to view all the upcoming appointmentsand delete existing appointments.
 
 ## Structure
 The interface was designed to be straightforwad and self-explanatory. It consists of a main menu that presents the user the following options:
@@ -44,12 +35,60 @@ The interface was designed to be straightforwad and self-explanatory. It consist
     1. As a site user I would like to book an appointment with my counsellor
     2. As a site user I would like to sign in to the website
     3. As a site user I would like to sign off from the website
-    4. As a site user I would like to see my upcoming apponintments and their status
+    4. As a site user I would like to see my upcoming appointments
     5. As a site admin I would like to view the upcoming appointments for all users
-    6. As a site admin I would like to change an appointment status when necessary
+    6. As a site admin I would like to delete an appointment status when necessary
     7. As a site admin I would like to invite new clients to create their accounts on the website
 
-## User Stories
+## Testing User Stories
+1. As a site user I would like to book an appointment with my counsellor
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|Book an appointment|Click on "Book an appointment" link in the navbar|See a list of available appointment dates and timeslots|Works as expected|
+
+
+2. As a site user I would like to sign in to the website
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|Sign in|Click on the Sign In link on the navbar|User will be prompted to login with their credentials|Works as expected|
+
+
+3. As a site user I would like to sign out of the website
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|Sign out|Click on the Sign Out link on the navbar|User will be signed out|Works as expected|
+
+
+4. As a site user I would like to see my appointments
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|View appointments|Click on the View Appointments link on the navbar|User will be shown list of appointments|Works as expected|
+
+
+5. As a site admin I would like to view appointments for all users
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|View appointments|Click on the View Appointments link on the navbar|Admin will be shown list of appointments for all users|Works as expected|
+
+
+6. As a site admin I would like to delete an appointments when necessary
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|Delete appointments|Click on the Client Admin link on the navbar, followed by the Manage Appointments link, Click on the Delete button|Appointment will be deleted|Works as expected|
+
+
+7. As a site admin I would like to invite new clients to create their accounts on the website
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+|Invite new clients|Click on the Client Admin link / Invite new client button / Enter client email address and press submit|Email with a signup link will be sent to the client|Works as expected (emails are being output to the console)|
+
 
 ## Deployment
 The program was deployed on [Heroku]((https://www.heroku.com/)), using the following steps:

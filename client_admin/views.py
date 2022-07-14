@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from invitations.utils import get_invitation_model
 from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponseRedirect
+from django.contrib.auth.models import User
 from counselling_appts.models import Appointment
 
 # decorator to redirect non-authenticated users to login page
@@ -18,9 +19,11 @@ def display_appointment_admin(request):
     '''
     if request.user.is_superuser:
         appointments = Appointment.objects.all()
+        clients = User.objects.all()
 
         context = {
             'appointments': appointments,
+            'clients': clients,
         }
 
         return render(request, 'client_admin/appointment_admin.html', context)
@@ -95,11 +98,12 @@ def change_appointment_status(request, appointment_id):
             appointment = get_object_or_404(Appointment, id=appointment_id)
             if "pending" in request.POST:
                 appointment.status = 0
+                appointment.save()
             elif "confirm" in request.POST:
                 appointment.status = 1
+                appointment.save()
             else:
-                appointment.status = 2
-            appointment.save()
+                appointment.delete()
 
             # redirects to page that called the function
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

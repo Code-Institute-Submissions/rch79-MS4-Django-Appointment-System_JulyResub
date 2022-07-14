@@ -7,9 +7,7 @@
          <tr class="table-primary">
             <th scope='col'>Appointment Date</th>
             <th scope='col'>Client Name</th>
-            <th scope='col'>Email Address</th>
             <th scope='col'>Appointment Status</th>
-            <th scope='col'>Comments</th>
             <th scope='col' class="text-center">Change Status</th>
          </tr>
       </thead>
@@ -17,8 +15,7 @@
          {% for appointment in appointments %}
          <tr>
             <td>{{ appointment.date }}</td>
-            <td>{{ appointment.client.first_name }} {{ appointment.client.last_name }}</td>
-            <td><a href="mailto: {{ appointment.client.email }}">{{ appointment.client.email }}</a></td>
+            <td>{{ appointment.client }}</td>
             <td>
                {% if appointment.status == 0 %}
                   <span class="badge rounded-pill bg-warning text-dark">{{ appointment.get_status_display }}</span>
@@ -28,7 +25,6 @@
                   <span class="badge rounded-pill bg-danger">{{ appointment.get_status_display }}</span>
                {% endif %}
             </td>
-            <td>{{ appointment.comment }}</td>
             <td class="text-center">
                <form action="{% url 'change' appointment.id %}" method="POST">
                   {% csrf_token %}
@@ -39,7 +35,8 @@
                      <a href="{% url 'change' appointment.id %}"><button type="submit" class="btn btn-success" name="confirm" value="1">Confirm</button></a>
                   </div>
                   <div class="d-inline">
-                     <a href="/change/{{ appointment.id }}"><button type="submit" class="btn btn-danger" name="cancel" value="2">Cancel</button></a></div>
+                     <a href="{% url 'change' appointment.id %}"><button type="submit" class="btn btn-danger" name="delete" value="2">Delete</button></a>
+                  </div>
                </form>
             </td>
          </tr>
