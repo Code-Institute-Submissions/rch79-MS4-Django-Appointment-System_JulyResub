@@ -1,17 +1,32 @@
-{% extends 'base.html' %} 
+{% extends "base.html" %}
 {% load static %}
+
+{% block extra_title %}
+    - Invite Client
+{% endblock %}
 
 
 {% block content %}
-
-<p>INVITE CLIENT</p>
-
-
-<form action="{% url 'send_invite' %}" method="POST">
-    {% csrf_token %}
-    <label for="email">Email address:</label><br>
-    <input type="email" id="email" name="email" required><br>
-    <input type="submit" id="btn btn-success" value="Submit">
-</form> 
-
+    <section class="parent-div">
+        <div class="bg-opaque"></div>
+        <div class="container d-flex w-25 h-100 ms-5 align-items-center">
+            <div class="row">
+                <div class="text-left">
+                    <h1 class="fw-bold">Invite a new client</h1>
+                    <hr>
+                </div>
+                <div class="text-center">
+                    <p>A signup link will be sent to the email address below</p>
+                </div>
+                <div class="text-center">
+                    <form action="{% url 'send_invite' %}" method="POST">
+                        {% csrf_token %}
+                        <label for="email">Email address:</label><br>
+                        <input type="email" id="email" name="email" required><br>
+                        <input type="submit" id="btn btn-success" value="Submit">
+                    </form>    
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}
