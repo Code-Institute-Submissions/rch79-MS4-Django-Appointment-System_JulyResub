@@ -48,9 +48,9 @@ Mental Health patients who wish to book an appointment with their counsellor.
   - On this page new clients can sign up for a new account:
     ![Sign Up](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/12_sign_up.png?raw=true)
 
-
-
 - __Sign out__
+  - The sign out page for clientys and counsellors:
+    ![Sign Up](https://github.com/rch79/MS4-Django-Appointment-System/blob/new_heroku/media/screenshots/11_sign_out.png?raw=true)
 
 
 ## User Goals
@@ -133,6 +133,22 @@ The interface was designed to be straightforwad and self-explanatory. It consist
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
 |Invite new clients|Click on the Client Admin link / Invite new client button / Enter client email address and press submit|Email with a signup link will be sent to the client|Works as expected (emails are being output to the console)|
+
+
+## Testing Site Functionality
+1. Date and time pickers should only display available options. Unavailable dates and timeslots will be greyed out. The date and time pickers are fed with arrays containing the list of unavailable options prior to being instantiated. The feature was tested and works as expected.
+
+2. Only valid dates should be submitted when user books an appointment. The data can only be set by the date and time pickers; manual input is disabled. The feature was tested and working as expected
+
+3. Unauthenticated users should only see sign in and home links on the page. The feature is tested and working as expected.
+
+4. Authenticated users should be shown options according to their access level. Regular clients should be able to book appointments and view their appointmensts. Superusers should be able to view appointments for all clients and have access to the administrative pages (including the one built into Django) - which allow superusers to send new invite links via email and edit appointments. Feature is tested and working as expected
+
+5. Unauthenticated clients trying to access restricted areas of the site should be redirected to the login page. The feature is tested and working as expected.
+
+6. Authenticated users with no superuser privileges trying to access areas restricted to superusers should be greeted with a 404 error. Feature is tested and working as expected.
+
+
 
 
 ## Deployment
