@@ -43,13 +43,13 @@ def create_fully_booked_list(dates_dictionary):
     '''
     Creates a list of dates with no more
     available timeslots. Each day has a
-    maximum of 9 appointment slots
+    maximum of 8 appointment slots
     '''
 
     fully_booked_dates = []
 
     for key, pair in dates_dictionary.items():
-        if len(pair) >= 9:
+        if len(pair) >= 8:
             fully_booked_dates.append(str(key))
 
     return fully_booked_dates
