@@ -23,15 +23,21 @@
 {% block content %}
     <section class="parent-div">
       <div class="bg-opaque"></div>
-      <div class="d-flex align-items-center justify-content-center h-100 vstack gap-1 border border-dark">
-        <div id="date-picker">
-          <form action>
-            <label for="flatpickr">Please select the appointment date:</label><br>
-            <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
-          </form>
+      <div class="container d-flex w-50 h-100 ms-5 align-items-center">
+        <div class="row">
+          <div class="text-left">
+            <h1 class="fw-bold">Book your appointment</h1>
+            <hr>
+          </div> 
+          <div id="date-picker">
+            <form action>
+              <label for="flatpickr">Please select the appointment date:</label><br>
+              <input class="flatpickr flatpickr-input active" type="text" placeholder="Select Date.." readonly="readonly" id="flatpickr">
+            </form>
+          </div>
+          <div class="row" id="time-picker"></div>
+          <div class="row" id="confirm-selection"></div>
         </div>
-        <div id="time-picker"></div>
-        <div id="confirm-selection"></div>
       </div>  
 
     </section>
@@ -79,7 +85,7 @@
       // Add the time picker to the page
       $( "#time-picker" ).append(`
         <p id="time-picker-inner">
-          <label for="time-ev">Please seect the appointment Time</label><br>
+          <label for="time-ev">Please select the appointment time</label><br>
           <input id="time-ev" type="text" placeholder="h:mm" aria-live="assertive" aria-label="Use up or down arrow keys to change time">
         </p>
       `);
@@ -111,8 +117,6 @@
           var timePicked = document.getElementById('time-ev').value;
           confirmSelection(datePicked, timePicked);
         };
-        
-        document.getElementById('time-picker-inner').remove();
       }, false);
 
       document.getElementById('time-ev').addEventListener('open.appo.picker', function (e) {
@@ -121,23 +125,23 @@
      });
 
      function confirmSelection(selectedDate, selectedTime) {
+      // close time picker after selection is made
+      document.getElementById('time-picker-inner').remove();
+
+      // display confirmation step 
       $( "#confirm-selection" ).append(`
-        <p>
-          Please confirm you selection:
-        </p>
-        <p>
-          Appointment date: ${selectedDate}
-        </p>
-        <p>
-          Appointment time: ${selectedTime}
-        </p>
+        <p class="fs-3"><strong>Please confirm you selection:</strong></p>
+        <p class="fs-4">Appointment date: <strong>${selectedDate}</strong></p>
+        <p class="fs-4">Appointment time: <strong>${selectedTime}</strong></p>
         <form action="{% url 'success' %}" method="POST">
           {% csrf_token %}
           <input type="hidden" id="id_time" name="time" value="${selectedTime}">
           <input type="hidden" id="id_date" name="date" value="${selectedDate}">
-          <input type="submit" value="Submit">
+          <div class="btn-group">
+            <input class="btn btn-success" type="submit" value="Submit">
+            <button class="btn btn-warning" onClick="window.location.reload(true);">Start Over</button>
+          </div>
         </form>
-        <button onClick="window.location.reload();">Start Over</button>
       `);
      };
   </script>
